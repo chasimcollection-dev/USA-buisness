@@ -3,140 +3,1391 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>USA Business Insights & Consulting</title>
-</head>
-<body style="font-family: Arial, sans-serif; margin: 0; padding: 0; color: #333; line-height: 1.6;">
+    <title>USABizInfo | United States Business Data & Intelligence</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <style>
+        :root {
+            --primary: #0A2540;
+            --secondary: #635BFF;
+            --accent: #00D4B2;
+            --dark: #1C2434;
+            --light: #F8F9FA;
+            --gray: #E6E8EB;
+            --text-dark: #27272E;
+            --text-muted: #697386;
+            --white: #FFFFFF;
+            --shadow: 0px 8px 24px rgba(0, 0, 0, 0.08);
+            --transition: all 0.3s ease;
+        }
 
-    <!-- HEADER / NAVIGATION -->
-    <header style="background-color: #0f2c59; padding: 20px 0; position: sticky; top: 0; z-index: 1000;">
-        <table width="90%" align="center" border="0" cellpadding="0" cellspacing="0">
-            <tr>
-                <td width="40%">
-                    <h1 style="color: #ffffff; margin: 0; font-size: 24px; letter-spacing: 1px;">USA <span style="color: #cc0000;">BIZ</span> INFO</h1>
-                </td>
-                <td width="60%" align="right">
-                    <a href="#home" style="color: #ffffff; text-decoration: none; margin-left: 20px; font-weight: bold;">Home</a>
-                    <a href="#about" style="color: #ffffff; text-decoration: none; margin-left: 20px; font-weight: bold;">About US Markets</a>
-                    <a href="#services" style="color: #ffffff; text-decoration: none; margin-left: 20px; font-weight: bold;">Our Services</a>
-                    <a href="#industries" style="color: #ffffff; text-decoration: none; margin-left: 20px; font-weight: bold;">Key Industries</a>
-                    <a href="#contact" style="color: #ffffff; text-decoration: none; margin-left: 20px; font-weight: bold;">Contact</a>
-                </td>
-            </tr>
-        </table>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--white);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* Utility Classes */
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 60px auto;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 16px;
+            font-weight: 800;
+        }
+
+        .section-header p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 28px;
+            font-weight: 600;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+            font-size: 1rem;
+            border: none;
+        }
+
+        .btn-primary {
+            background-color: var(--secondary);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background-color: #4B45E5;
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--gray);
+            color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--primary);
+            background-color: rgba(10, 37, 64, 0.02);
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: var(--white);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+        }
+
+        .logo i {
+            color: var(--secondary);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 32px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--secondary);
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #0A2540 0%, #123E6B 100%);
+            color: var(--white);
+            padding: 100px 0 120px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 80px;
+            background: var(--white);
+            clip-path: polygon(0 100%, 100% 100%, 100% 0);
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            align-items: center;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            line-height: 1.15;
+            font-weight: 800;
+            margin-bottom: 24px;
+        }
+
+        .hero-content h1 span {
+            color: var(--accent);
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 36px;
+            color: #C1C9D2;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+        }
+
+        .hero-buttons .btn-outline {
+            color: var(--white);
+            border-color: rgba(255,255,255,0.3);
+        }
+
+        .hero-buttons .btn-outline:hover {
+            border-color: var(--white);
+            background-color: rgba(255,255,255,0.1);
+        }
+
+        .hero-visual {
+            position: relative;
+            background: linear-gradient(rgba(11, 31, 53, 0.35), rgba(11, 31, 53, 0.35)), url('https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
+            border-radius: 16px;
+            padding: 32px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            min-height: 420px;
+        }
+
+        .stats-dashboard-mock {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .mock-row {
+            display: flex;
+            gap: 16px;
+        }
+
+        .mock-card {
+            background: rgba(255, 255, 255, 0.08);
+            padding: 20px;
+            border-radius: 8px;
+            flex: 1;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .mock-card h4 { color: var(--accent); font-size: 1.5rem; margin-bottom: 4px; }
+        .mock-card p { color: #A3B1C2; font-size: 0.85rem; }
+
+        /* General Sections Styling */
+        section {
+            padding: 100px 0;
+        }
+
+        /* Interactive Filter Section & Intelligence Data */
+        #intelligence {
+            background-color: var(--light);
+        }
+
+        .filter-controls {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background-color: var(--white);
+            border: 1px solid var(--gray);
+            padding: 10px 20px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--text-muted);
+            transition: var(--transition);
+        }
+
+        .filter-btn.active, .filter-btn:hover {
+            background-color: var(--primary);
+            color: var(--white);
+            border-color: var(--primary);
+        }
+
+        .data-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 32px;
+        }
+
+        .data-card {
+            background-color: var(--white);
+            border-radius: 12px;
+            padding: 32px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid rgba(0,0,0,0.02);
+        }
+
+        .data-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .badge {
+            padding: 4px 12px;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .badge-macro { background: rgba(99, 91, 255, 0.1); color: var(--secondary); }
+        .badge-state { background: rgba(0, 212, 178, 0.1); color: #009E85; }
+        .badge-sector { background: rgba(10, 37, 64, 0.1); color: var(--primary); }
+
+        .data-card h3 {
+            font-size: 1.3rem;
+            color: var(--primary);
+            margin-bottom: 12px;
+        }
+
+        .data-metric {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: 16px;
+            display: flex;
+            align-items: baseline;
+            gap: 8px;
+        }
+
+        .data-metric span {
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--text-muted);
+        }
+
+        .trend-indicator {
+            font-size: 0.9rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .trend-up { color: #00B159; }
+        .trend-down { color: #FF3B30; }
+
+        /* Multistep Data Wizard */
+        #wizard-section {
+            background-color: var(--white);
+            border-bottom: 1px solid var(--gray);
+        }
+
+        .wizard-container {
+            max-width: 650px;
+            margin: 0 auto;
+            background-color: var(--light);
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: var(--shadow);
+        }
+
+        .wizard-progress {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 32px;
+            position: relative;
+        }
+
+        .wizard-progress::before {
+            content: '';
+            position: absolute;
+            top: 15px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background-color: var(--gray);
+            z-index: 1;
+        }
+
+        .progress-line-fill {
+            position: absolute;
+            top: 15px;
+            left: 0;
+            height: 2px;
+            background-color: var(--secondary);
+            z-index: 1;
+            width: 0%;
+            transition: var(--transition);
+        }
+
+        .step-indicator {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background-color: var(--white);
+            border: 2px solid var(--gray);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            z-index: 2;
+            color: var(--text-muted);
+            transition: var(--transition);
+        }
+
+        .step-indicator.active {
+            border-color: var(--secondary);
+            background-color: var(--secondary);
+            color: var(--white);
+        }
+
+        .step-indicator.completed {
+            border-color: var(--accent);
+            background-color: var(--accent);
+            color: var(--primary);
+        }
+
+        .wizard-step {
+            display: none;
+        }
+
+        .wizard-step.active {
+            display: block;
+            animation: fadeIn 0.4s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .wizard-step h3 {
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid var(--gray);
+            border-radius: 6px;
+            font-size: 1rem;
+            background-color: var(--white);
+            color: var(--text-dark);
+            outline: none;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            border-color: var(--secondary);
+            box-shadow: 0 0 0 3px rgba(99, 91, 255, 0.15);
+        }
+
+        .wizard-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 32px;
+        }
+
+        /* Pricing Packages */
+        #pricing {
+            background-color: var(--light);
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+            align-items: stretch;
+        }
+
+        .pricing-card {
+            background-color: var(--white);
+            border-radius: 12px;
+            padding: 40px 32px;
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(0,0,0,0.02);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .pricing-card.featured {
+            border: 2px solid var(--secondary);
+            transform: scale(1.03);
+        }
+
+        .featured-tag {
+            position: absolute;
+            top: -14px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--secondary);
+            color: var(--white);
+            padding: 4px 16px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .pricing-header h3 {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+
+        .pricing-header p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 24px;
+        }
+
+        .price {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: 32px;
+            display: flex;
+            align-items: baseline;
+        }
+
+        .price span {
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            margin-left: 4px;
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin-bottom: 40px;
+            flex-grow: 1;
+        }
+
+        .pricing-features li {
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--text-dark);
+        }
+
+        .pricing-features i {
+            color: var(--accent);
+            font-size: 1.1rem;
+        }
+
+        .pricing-card .btn {
+            width: 100%;
+        }
+
+        /* Searchable FAQ Section */
+        #faq {
+            background-color: var(--white);
+        }
+
+        .faq-search-wrapper {
+            max-width: 500px;
+            margin: 0 auto 48px auto;
+            position: relative;
+        }
+
+        .faq-search-wrapper i {
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+
+        .faq-search-wrapper .form-control {
+            padding-left: 48px;
+            border-radius: 30px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .faq-item {
+            border: 1px solid var(--gray);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .faq-trigger {
+            width: 100%;
+            background: none;
+            border: none;
+            padding: 24px;
+            text-align: left;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            outline: none;
+        }
+
+        .faq-trigger h3 {
+            font-size: 1.15rem;
+            color: var(--primary);
+            font-weight: 600;
+            padding-right: 16px;
+        }
+
+        .faq-icon {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            transition: var(--transition);
+        }
+
+        .faq-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            background-color: var(--light);
+        }
+
+        .faq-content p {
+            padding: 0 24px 24px 24px;
+            color: var(--text-muted);
+        }
+
+        .faq-item.open .faq-content {
+            max-height: 300px;
+        }
+
+        .faq-item.open .faq-icon {
+            transform: rotate(180deg);
+            color: var(--secondary);
+        }
+
+        .no-results {
+            text-align: center;
+            color: var(--text-muted);
+            padding: 40px;
+            display: none;
+        }
+
+        /* Contact Section */
+        #contact {
+            background-color: var(--light);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 64px;
+        }
+
+        .contact-info h3 {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 16px;
+        }
+
+        .contact-info p {
+            color: var(--text-muted);
+            margin-bottom: 32px;
+        }
+
+        .contact-methods {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .method-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+        }
+
+        .method-icon {
+            width: 48px;
+            height: 48px;
+            background-color: var(--white);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--secondary);
+            font-size: 1.2rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+            flex-shrink: 0;
+        }
+
+        .method-details h4 {
+            color: var(--primary);
+            margin-bottom: 4px;
+        }
+
+        .method-details p {
+            margin-bottom: 0;
+            font-size: 0.95rem;
+        }
+
+        .contact-form-container {
+            background-color: var(--white);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .error-message {
+            color: #FF3B30;
+            font-size: 0.85rem;
+            margin-top: 4px;
+            display: none;
+        }
+
+        .success-banner {
+            background-color: #E6F8EF;
+            color: #00B159;
+            padding: 16px;
+            border-radius: 6px;
+            margin-bottom: 24px;
+            font-weight: 600;
+            display: none;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary);
+            color: #C1C9D2;
+            padding: 80px 0 30px 0;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.5fr repeat(3, 1fr);
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .footer-brand .logo {
+            color: var(--white);
+            margin-bottom: 16px;
+        }
+
+        .footer-brand p {
+            font-size: 0.95rem;
+            margin-bottom: 24px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 12px;
+        }
+
+        .social-links a {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background-color: rgba(255,255,255,0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            transition: var(--transition);
+            text-decoration: none;
+        }
+
+        .social-links a:hover {
+            background-color: var(--secondary);
+            transform: translateY(-2px);
+        }
+
+        .footer-column h4 {
+            color: var(--white);
+            font-size: 1.1rem;
+            margin-bottom: 24px;
+            font-weight: 600;
+        }
+
+        .footer-column ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .footer-column ul a {
+            color: #A3B1C2;
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: 0.95rem;
+        }
+
+        .footer-column ul a:hover {
+            color: var(--white);
+            padding-left: 4px;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.08);
+            padding-top: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+        }
+
+        .footer-bottom-links {
+            display: flex;
+            gap: 24px;
+        }
+
+        .footer-bottom-links a {
+            color: #A3B1C2;
+            text-decoration: none;
+        }
+
+        /* Responsive Layouts */
+        @media (max-width: 992px) {
+            .hero-grid { grid-template-columns: 1fr; text-align: center; }
+            .hero-content h1 { font-size: 2.8rem; }
+            .hero-buttons { justify-content: center; }
+            .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 80px;
+                left: 0;
+                right: 0;
+                background-color: var(--white);
+                padding: 24px;
+                box-shadow: 0 10px 15px rgba(0,0,0,0.05);
+                gap: 16px;
+                border-top: 1px solid var(--gray);
+            }
+
+            .nav-links.open { display: flex; }
+            .menu-toggle { display: block; }
+            .section-header h2 { font-size: 2rem; }
+            .form-row { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr; }
+            .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container navbar">
+            <a href="#" class="logo"><i class="fa-solid fa-chart-line"></i> USABizInfo</a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#" class="active">Home</a></li>
+                    <li><a href="#intelligence">Data Explorer</a></li>
+                    <li><a href="#wizard-section">Report Wizard</a></li>
+                    <li><a href="#pricing">Pricing</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="menu-toggle"><i class="fa-solid fa-bars"></i></div>
+        </div>
     </header>
 
-    <!-- HERO SECTION -->
-    <section id="home" style="background: linear-gradient(rgba(15, 44, 89, 0.85), rgba(15, 44, 89, 0.85)), url('https://unsplash.com') no-repeat center center/cover; padding: 150px 0; color: #ffffff; text-align: center;">
-        <table width="80%" align="center">
-            <tr>
-                <td>
-                    <h2 style="font-size: 45px; margin-bottom: 20px;">Navigate the US Corporate Landscape</h2>
-                    <p style="font-size: 18px; max-width: 700px; margin: 0 auto 30px auto;">Get comprehensive insights, market analysis, and strategic data to scale or establish your business operations across the United States.</p>
-                    <a href="#contact" style="background-color: #cc0000; color: #ffffff; padding: 12px 30px; text-decoration: none; font-weight: bold; border-radius: 5px; font-size: 16px;">Get Consultation</a>
-                </td>
-            </tr>
-        </table>
-    </section>
+    <main>
+        <section class="hero">
+            <div class="container hero-grid">
+                <div class="hero-content">
+                    <h1>Real-Time <span>US Business</span> Intelligence Platform</h1>
+                    <p>Access programmatic macroeconomic datasets, up-to-date state-by-state economic health diagnostics, and foundational industrial trends mapping across all major sectors.</p>
+                    <div class="hero-buttons">
+                        <a href="#intelligence" class="btn btn-primary">Explore Live Data</a>
+                        <a href="#wizard-section" class="btn btn-outline">Generate Custom Report</a>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="stats-dashboard-mock">
+                        <div class="mock-row">
+                            <div class="mock-card">
+                                <h4>33.2M</h4>
+                                <p>Active US Businesses Indexed</p>
+                            </div>
+                            <div class="mock-card">
+                                <h4>+2.4%</h4>
+                                <p>Avg GDP Growth Rate QoQ</p>
+                            </div>
+                        </div>
+                        <div class="mock-row">
+                            <div class="mock-card">
+                                <h4>Technology</h4>
+                                <p>Top Investment Inflows</p>
+                            </div>
+                            <div class="mock-card">
+                                <h4>18.3K</h4>
+                                <p>State-level Signals</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    <!-- STATS BANNER -->
-    <section style="background-color: #f4f6f9; padding: 40px 0; border-bottom: 1px solid #ddd;">
-        <table width="80%" align="center" border="0" cellpadding="10" cellspacing="0" style="text-align: center;">
-            <tr>
-                <td width="33%">
-                    <h3 style="font-size: 32px; color: #0f2c59; margin: 0;">$25T+</h3>
-                    <p style="margin: 5px 0 0 0; color: #666; font-weight: bold;">US GDP Market</p>
-                </td>
-                <td width="33%">
-                    <h3 style="font-size: 32px; color: #0f2c59; margin: 0;">50</h3>
-                    <p style="margin: 5px 0 0 0; color: #666; font-weight: bold;">States Represented</p>
-                </td>
-                <td width="33%">
-                    <h3 style="font-size: 32px; color: #0f2c59; margin: 0;">10k+</h3>
-                    <p style="margin: 5px 0 0 0; color: #666; font-weight: bold;">Businesses Cataloged</p>
-                </td>
-            </tr>
-        </table>
-    </section>
+        <section id="intelligence">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Real-Time Core US Metrics</h2>
+                    <p>Filter data parameters to parse macroeconomic indices, specialized regional analytics, or foundational vertical profiles.</p>
+                </div>
 
-    <!-- ABOUT SECTION (Two Columns) -->
-    <section id="about" style="padding: 80px 0;">
-        <table width="85%" align="center" border="0" cellpadding="20" cellspacing="0">
-            <tr>
-                <td width="50%" valign="top">
-                    <h2 style="color: #0f2c59; font-size: 32px; margin-top: 0;">Understanding the US Market</h2>
-                    <p style="color: #555;">The United States offers one of the most vibrant, innovative, and resilient business environments globally. From Delaware LLC incorporations to Silicon Valley tech ecosystems, understanding local compliance, taxation, and market consumer behavior is key to survival.</p>
-                    <p style="color: #555;">Our platform compiles data from official federal frameworks, state registries, and economic departments to bring you real-time strategies for modern market entry.</p>
-                </td>
-                <td width="50%" align="center">
-                    <img src="https://unsplash.com" alt="US Financial Building" style="width: 100%; max-width: 500px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
-                </td>
-            </tr>
-        </table>
-    </section>
+                <div class="filter-controls">
+                    <button class="filter-btn active">All Channels</button>
+                    <button class="filter-btn">Macro Data</button>
+                    <button class="filter-btn">State Profiles</button>
+                    <button class="filter-btn">Sector Insights</button>
+                </div>
 
-    <!-- SERVICES SECTION (Grid Style) -->
-    <section id="services" style="background-color: #f9fbfd; padding: 80px 0;">
-        <div style="text-align: center; margin-bottom: 5px;">
-            <h2 style="color: #0f2c59; font-size: 32px; margin-bottom: 10px;">Our Core Intelligence Areas</h2>
-            <p style="color: #666; max-width: 600px; margin: 0 auto 50px auto;">We provide actionable data across multiple business vectors in the United States.</p>
+                <div class="data-grid">
+                    <article class="data-card">
+                        <div class="card-meta">
+                            <span class="badge badge-macro">Macro Data</span>
+                            <span class="trend-indicator trend-up">+2.8%</span>
+                        </div>
+                        <h3>Annualized National GDP</h3>
+                        <div class="data-metric">$28.2T <span>USD</span></div>
+                        <p>Aggregated consumer spending and industrial index outputs relative to previous tracking intervals.</p>
+                    </article>
+
+                    <article class="data-card">
+                        <div class="card-meta">
+                            <span class="badge badge-macro">Macro Data</span>
+                            <span class="trend-indicator trend-down">-0.3%</span>
+                        </div>
+                        <h3>Core Inflation CPI</h3>
+                        <div class="data-metric">2.9% <span>Index</span></div>
+                        <p>Trailing 12-month consumer price baseline indexing regular market commodities basket metrics.</p>
+                    </article>
+
+                    <article class="data-card">
+                        <div class="card-meta">
+                            <span class="badge badge-state">State Profiles</span>
+                            <span class="trend-indicator trend-up">+4.1%</span>
+                        </div>
+                        <h3>California Economy</h3>
+                        <div class="data-metric">$3.9T <span>GSP</span></div>
+                        <p>Tech ecosystem capital funding recoveries fuel state level dynamic economic expansion frameworks.</p>
+                    </article>
+
+                    <article class="data-card">
+                        <div class="card-meta">
+                            <span class="badge badge-state">State Profiles</span>
+                            <span class="trend-indicator trend-up">+5.2%</span>
+                        </div>
+                        <h3>Texas Business Inflow</h3>
+                        <div class="data-metric">42.5K <span>New Entities</span></div>
+                        <p>Favorable corporate structure incentives drive net new incorporation volumes this cycle.</p>
+                    </article>
+
+                    <article class="data-card">
+                        <div class="card-meta">
+                            <span class="badge badge-sector">Sector Insights</span>
+                            <span class="trend-indicator trend-up">+12.4%</span>
+                        </div>
+                        <h3>Technology & AI Systems</h3>
+                        <div class="data-metric">$840B <span>Market Cap Vol</span></div>
+                        <p>Enterprise automation demand patterns stimulate capital allocation models nationwide.</p>
+                    </article>
+
+                    <article class="data-card">
+                        <div class="card-meta">
+                            <span class="badge badge-sector">Sector Insights</span>
+                            <span class="trend-indicator trend-down">-1.2%</span>
+                        </div>
+                        <h3>Commercial Real Estate</h3>
+                        <div class="data-metric">81.4% <span>Occupancy Avg</span></div>
+                        <p>Hybrid operational workforce distributions continue formatting urban facility asset performance.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="wizard-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Custom Report Blueprint Tool</h2>
+                    <p>Configure your criteria below to instantly match tailored sector matrices or deep-dive demographic profiling pools.</p>
+                </div>
+
+                <div class="wizard-container">
+                    <div class="wizard-progress">
+                        <div class="progress-line-fill"></div>
+                        <div class="step-indicator active">1</div>
+                        <div class="step-indicator">2</div>
+                        <div class="step-indicator">3</div>
+                    </div>
+
+                    <div class="wizard-step active">
+                        <h3>Select Focus Architecture</h3>
+                        <div class="form-group">
+                            <label>Intelligence Layer</label>
+                            <select class="form-control">
+                                <option>Macro-Economic Consolidated Profile (USA)</option>
+                                <option>State-by-State Specific Cross Section</option>
+                                <option>Isolated Vertical Industry Segments</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="wizard-step">
+                        <h3>Detail Target Thresholds</h3>
+                        <div class="form-group">
+                            <label>Information Granularity</label>
+                            <select class="form-control">
+                                <option>Executive Summary & Trend Vector Forecasting</option>
+                                <option>Granular Historical Ledger & Compliance Tracking</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="wizard-step">
+                        <h3>Delivery Coordination</h3>
+                        <div class="form-group">
+                            <label>Corporate Email Address</label>
+                            <input type="email" class="form-control" placeholder="Provide a valid institutional address structure." />
+                        </div>
+                    </div>
+
+                    <div class="wizard-buttons">
+                        <button class="btn btn-outline" type="button" id="prevStep">Previous Step</button>
+                        <button class="btn btn-primary" type="button" id="nextStep">Proceed Step</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="pricing">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Scalable Enterprise Access Tiers</h2>
+                    <p>Select an operational layer configured exactly to your institutional engineering metrics requirements.</p>
+                </div>
+
+                <div class="pricing-grid">
+                    <div class="pricing-card">
+                        <div class="pricing-header">
+                            <h3>Starter Sandbox</h3>
+                            <p>Perfect for localized boutique agencies or individual market researchers.</p>
+                        </div>
+                        <div class="price">$49<span>/mo</span></div>
+                        <ul class="pricing-features">
+                            <li><i class="fa-solid fa-check"></i> Standard Public Dataset Access</li>
+                            <li><i class="fa-solid fa-check"></i> 5 Customizable Regional Lookups</li>
+                            <li><i class="fa-solid fa-check"></i> CSV Output Capabilities</li>
+                            <li><i class="fa-solid fa-check"></i> Live REST API Webhooks</li>
+                        </ul>
+                        <a href="#contact" class="btn btn-outline">Initialize Sandbox</a>
+                    </div>
+
+                    <div class="pricing-card featured">
+                        <span class="featured-tag">Highly Selected</span>
+                        <div class="pricing-header">
+                            <h3>Professional Suite</h3>
+                            <p>Engineered for active investment platforms requiring low latency feeds.</p>
+                        </div>
+                        <div class="price">$199<span>/mo</span></div>
+                        <ul class="pricing-features">
+                            <li><i class="fa-solid fa-check"></i> Full Real-Time Macro Core Feeds</li>
+                            <li><i class="fa-solid fa-check"></i> Multi-State Legislative Tracking</li>
+                            <li><i class="fa-solid fa-check"></i> Advanced Algorithmic Projections</li>
+                            <li><i class="fa-solid fa-check"></i> Standard API Execution Sync</li>
+                        </ul>
+                        <a href="#contact" class="btn btn-primary">Launch Pro Profile</a>
+                    </div>
+
+                    <div class="pricing-card">
+                        <div class="pricing-header">
+                            <h3>Institutional Cloud</h3>
+                            <p>Designed for multinational banking structures requiring continuous pipelines.</p>
+                        </div>
+                        <div class="price">Custom</div>
+                        <ul class="pricing-features">
+                            <li><i class="fa-solid fa-check"></i> Dedicated Isolation Infrastructure</li>
+                            <li><i class="fa-solid fa-check"></i> Uncapped Webhook Infrastructure</li>
+                            <li><i class="fa-solid fa-check"></i> Customized Machine Learning Tensors</li>
+                            <li><i class="fa-solid fa-check"></i> 24/7 SLA Engineering Response</li>
+                        </ul>
+                        <a href="#contact" class="btn btn-outline">Contact Architecture Desk</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="faq">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Frequently Examined System Protocols</h2>
+                    <p>Dynamically search our system knowledge documentation to immediately resolve operational process questions.</p>
+                </div>
+
+                <div class="faq-search-wrapper">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" class="form-control" id="faqSearch" placeholder="Search FAQs..." />
+                </div>
+
+                <div class="faq-container">
+                    <div class="faq-item open">
+                        <button class="faq-trigger" type="button">
+                            <h3>What data sources do you use?</h3>
+                            <span class="faq-icon"><i class="fa-solid fa-chevron-down"></i></span>
+                        </button>
+                        <div class="faq-content">
+                            <p>We aggregate public and licensed data across federal economic indicators, state datasets, and private commercial data feeds to provide a unified intelligence layer.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-trigger" type="button">
+                            <h3>How often is the data refreshed?</h3>
+                            <span class="faq-icon"><i class="fa-solid fa-chevron-down"></i></span>
+                        </button>
+                        <div class="faq-content">
+                            <p>Macro updates occur multiple times per day, while sector and regional data refresh on a daily, weekly, or monthly cadence depending on source latency.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-trigger" type="button">
+                            <h3>Can I export the reports?</h3>
+                            <span class="faq-icon"><i class="fa-solid fa-chevron-down"></i></span>
+                        </button>
+                        <div class="faq-content">
+                            <p>Yes. All plans support export to CSV, and higher-tier subscriptions also provide API access for automated downstream integration.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="no-results">No matching questions were found.</div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <div class="container">
+                <div class="contact-grid">
+                    <div class="contact-info">
+                        <h3>Talk with a data strategist</h3>
+                        <p>Let our team help you model your next market expansion or institutional intelligence workflow.</p>
+
+                        <div class="contact-methods">
+                            <div class="method-item">
+                                <div class="method-icon"><i class="fa-solid fa-envelope"></i></div>
+                                <div class="method-details">
+                                    <h4>Email</h4>
+                                    <p>hello@usabizinfo.com</p>
+                                </div>
+                            </div>
+
+                            <div class="method-item">
+                                <div class="method-icon"><i class="fa-solid fa-phone"></i></div>
+                                <div class="method-details">
+                                    <h4>Call</h4>
+                                    <p>+1 (415) 555-0199</p>
+                                </div>
+                            </div>
+
+                            <div class="method-item">
+                                <div class="method-icon"><i class="fa-solid fa-location-dot"></i></div>
+                                <div class="method-details">
+                                    <h4>Office</h4>
+                                    <p>1220 19th Street NW, Washington, DC</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="contact-form-container">
+                        <div class="success-banner"><i class="fa-solid fa-circle-check"></i> Your request has been submitted successfully.</div>
+                        <form id="contactForm">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>First Name</label>
+                                    <input type="text" class="form-control" name="firstName" />
+                                    <div class="error-message">Please enter your first name.</div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Last Name</label>
+                                    <input type="text" class="form-control" name="lastName" />
+                                    <div class="error-message">Please enter your last name.</div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Work Email</label>
+                                <input type="email" class="form-control" name="email" />
+                                <div class="error-message">Please enter a valid email address.</div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Company / Organization</label>
+                                <input type="text" class="form-control" name="company" />
+                                <div class="error-message">Please enter your company name.</div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Use Case</label>
+                                <textarea class="form-control" rows="5" name="message"></textarea>
+                                <div class="error-message">Please provide a short project summary.</div>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary">Request Consultation</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="#" class="logo"><i class="fa-solid fa-chart-line"></i> USABizInfo</a>
+                    <p>Unified data intelligence for economic operators, investment teams, and public sector strategy leaders.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+                        <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Platform</h4>
+                    <ul>
+                        <li><a href="#intelligence">Data Explorer</a></li>
+                        <li><a href="#wizard-section">Report Wizard</a></li>
+                        <li><a href="#pricing">Pricing</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Partners</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="#faq">FAQ</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="#">Privacy</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>© 2026 USABizInfo. All rights reserved.</p>
+                <div class="footer-bottom-links">
+                    <a href="#">Terms</a>
+                    <a href="#">Privacy</a>
+                    <a href="#">Cookies</a>
+                </div>
+            </div>
         </div>
-        
-        <table width="85%" align="center" border="0" cellpadding="15" cellspacing="0">
-            <tr>
-                <!-- Service 1 -->
-                <td width="33%" valign="top">
-                    <div style="background-color: #ffffff; padding: 25px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); text-align: center;">
-                        <img src="https://unsplash.com" alt="Incorporation" style="border-radius: 4px; margin-bottom: 15px; width: 100%; height: 200px; object-fit: cover;">
-                        <h3 style="color: #0f2c59; margin-bottom: 10px;">Business Incorporation</h3>
-                        <p style="font-size: 14px; color: #666; margin: 0;">Complete guide on setting up an LLC or C-Corp in states like Delaware, Wyoming, and Nevada.</p>
-                    </div>
-                </td>
-                <!-- Service 2 -->
-                <td width="33%" valign="top">
-                    <div style="background-color: #ffffff; padding: 25px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); text-align: center;">
-                        <img src="https://unsplash.com" alt="Tax Compliance" style="border-radius: 4px; margin-bottom: 15px; width: 100%; height: 200px; object-fit: cover;">
-                        <h3 style="color: #0f2c59; margin-bottom: 10px;">Taxation & Filing</h3>
-                        <p style="font-size: 14px; color: #666; margin: 0;">Breakdown of IRS compliance, Federal Corporate Taxes, Sales Taxes, and state regulations.</p>
-                    </div>
-                </td>
-                <!-- Service 3 -->
-                <td width="33%" valign="top">
-                    <div style="background-color: #ffffff; padding: 25px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); text-align: center;">
-                        <img src="https://unsplash.com" alt="Market Analysis" style="border-radius: 4px; margin-bottom: 15px; width: 100%; height: 200px; object-fit: cover;">
-                        <h3 style="color: #0f2c59; margin-bottom: 10px;">Market Analytics</h3>
-                        <p style="font-size: 14px; color: #666; margin: 0;">Comprehensive data on industry trends, competitor tracking, and target consumer demographics.</p>
-                    </div>
-                </td>
-            </tr>
-        </table>
-    </section>
+    </footer>
 
-    <!-- KEY INDUSTRIES SECTOR -->
-    <section id="industries" style="padding: 80px 0;">
-        <div style="text-align: center; margin-bottom: 5px;">
-            <h2 style="color: #0f2c59; font-size: 32px; margin-bottom: 40px;">Dominant Industrial Sectors</h2>
-        </div>
+    <script>
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        menuToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
 
-        <table width="85%" align="center" border="0" cellpadding="0" cellspacing="0">
-            <!-- Sector 1 -->
-            <tr>
-                <td width="40%">
-                    <img src="https://unsplash.com" alt="Tech" style="width: 100%; border-radius: 6px;">
-                </td>
-                <td width="5%"></td>
-                <td width="55%" valign="middle">
-                    <h3 style="color: #cc0000; margin: 0; font-size: 22px;">01. Technology & SaaS</h3>
-                    <p style="color: #555; font-size: 16px;">The US continues to lead global software innovation. Major clusters like Silicon Valley, Austin, and New York host headquarters that generate billions in annual revenue, offering expansive B2B partnership opportunities.</p>
-                </td>
-            </tr>
-            <!-- Spacer row -->
-            <tr><td colspan="3" style="padding: 30px 0;"></td></tr>
-            <!-- Sector 2 -->
-            <tr>
-                <td width="55%" valign="middle">
-                    <h3 style="color: #cc0000; margin: 0; font-size: 22px;">02. E-Commerce & Retail</h3>
-                    <p style="color: #555; font-size: 16px;">Driven by platforms like Amazon and Walmart, consumer retail infrastructure in the United States requires high-tier supply chain solutions, third-party logistics (3PL), and sophisticated online marketing funnel automation.</p>
-                </td>
-                <td width="5%"></td>
-                <td width="40%">
-                    <img src="https://unsplash.com" alt="E-commerce" style="width: 100%; border-radius: 6px;">
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+            });
+        });
+
+        const steps = document.querySelectorAll('.wizard-step');
+        const indicators = document.querySelectorAll('.step-indicator');
+        const progressFill = document.querySelector('.progress-line-fill');
+        let currentStep = 0;
+
+        function renderWizard() {
+            steps.forEach((step, idx) => step.classList.toggle('active', idx === currentStep));
+            indicators.forEach((indicator, idx) => {
+                indicator.classList.toggle('active', idx === currentStep);
+                indicator.classList.toggle('completed', idx < currentStep);
+            });
+            const percent = (currentStep / (steps.length - 1)) * 100;
+            progressFill.style.width = `${percent}%`;
+        }
+
+        document.getElementById('nextStep').addEventListener('click', () => {
+            if (currentStep < steps.length - 1) {
+                currentStep++;
+                renderWizard();
+            }
+        });
+
+        document.getElementById('prevStep').addEventListener('click', () => {
+            if (currentStep > 0) {
+                currentStep--;
+                renderWizard();
+            }
+        });
+
+        const faqItems = document.querySelectorAll('.faq-item');
+        faqItems.forEach(item => {
+            const trigger = item.querySelector('.faq-trigger');
+            trigger.addEventListener('click', () => {
+                item.classList.toggle('open');
+            });
+        });
+
+        const faqSearch = document.getElementById('faqSearch');
+        const faqList = document.querySelectorAll('.faq-item');
+        const noResults = document.querySelector('.no-results');
+
+        faqSearch.addEventListener('input', (e) => {
+            const query = e.target.value.toLowerCase();
+            let visible = 0;
+
+            faqList.forEach(item => {
+                const text = item.textContent.toLowerCase();
+                const match = text.includes(query);
+                item.style.display = match ? 'block' : 'none';
+                if (match) visible++;
+            });
+
+            noResults.style.display = visible === 0 ? 'block' : 'none';
+        });
+
+        const contactForm = document.getElementById('contactForm');
+        const successBanner = document.querySelector('.success-banner');
+
+        contactForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+            let valid = true;
+
+            contactForm.querySelectorAll('.form-group').forEach(group => {
+                const input = group.querySelector('input, textarea');
+                const error = group.querySelector('.error-message');
+                if (!input || !input.value.trim()) {
+                    if (error) error.style.display = 'block';
+                    valid = false;
+                    return;
+                }
+                if (error) error.style.display = 'none';
+            });
+
+            if (valid) {
+                successBanner.style.display = 'flex';
+                contactForm.reset();
+            }
+        });
+    </script>
+</body>
+</html>
